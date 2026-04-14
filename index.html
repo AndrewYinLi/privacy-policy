@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Race Poke SMS Privacy</title>
+  <title>Race Poke SMS Updates</title>
+  <meta
+    name="description"
+    content="Sign up for Race Poke SMS updates about race registration deadlines and race-related updates."
+  />
   <style>
     :root {
       --bg: #f5f7fb;
@@ -13,6 +17,7 @@
       --border: #d1d5db;
       --accent: #2563eb;
       --accent-hover: #1d4ed8;
+      --success-bg: #eff6ff;
     }
 
     * { box-sizing: border-box; }
@@ -46,31 +51,41 @@
 
     h1 {
       font-size: 2rem;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 1.4rem;
-      margin-top: 36px;
-      margin-bottom: 12px;
+      font-size: 1.35rem;
+      margin-top: 34px;
+      margin-bottom: 10px;
     }
 
     p {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
     }
 
-    .subtext,
-    .muted,
-    .links,
-    .consent-note {
+    .lead {
+      font-size: 1.05rem;
       color: var(--muted);
     }
 
-    form {
-      margin-top: 24px;
+    .program-box {
+      margin: 20px 0 24px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fafafa;
     }
 
-    label {
+    .program-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    form {
+      margin-top: 8px;
+    }
+
+    label.field-label {
       display: block;
       font-weight: 600;
       margin-bottom: 8px;
@@ -83,6 +98,7 @@
       padding: 14px 16px;
       font-size: 1rem;
       margin-bottom: 16px;
+      background: #fff;
     }
 
     .checkbox-row {
@@ -127,11 +143,29 @@
       background: var(--accent-hover);
     }
 
+    .consent-note,
+    .small,
+    .muted {
+      color: var(--muted);
+    }
+
+    .consent-note {
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    .links {
+      margin-top: 18px;
+      font-weight: 500;
+    }
+
+    .links a,
     a {
       color: var(--accent);
       text-decoration: none;
     }
 
+    .links a:hover,
     a:hover {
       text-decoration: underline;
     }
@@ -140,17 +174,16 @@
       margin-top: 24px;
       padding: 16px;
       border-left: 4px solid var(--accent);
-      background: #eff6ff;
+      background: var(--success-bg);
       border-radius: 8px;
     }
 
-    .footer-links {
-      margin: 20px 0 8px;
-      font-weight: 500;
-    }
-
-    .section {
-      margin-top: 24px;
+    .notice {
+      margin-top: 22px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
     }
 
     @media (max-width: 640px) {
@@ -172,16 +205,34 @@
   <main class="container">
     <div class="card">
       <h1>Sign Up for Race Poke SMS Updates</h1>
-      <p class="subtext">Get text reminders for upcoming race registration deadlines and event updates.</p>
+      <p class="lead">
+        Get recurring text reminders for upcoming race registration deadlines and race-related updates.
+      </p>
+
+      <div class="program-box">
+        <p><strong>This is a recurring SMS alerts program.</strong></p>
+        <p>Message frequency varies based on the races and alerts you choose to follow.</p>
+      </div>
 
       <form>
-        <label for="phone">Phone Number</label>
-        <input id="phone" name="phone" type="tel" placeholder="Enter your mobile number" />
+        <label class="field-label" for="phone">Phone Number</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          placeholder="Enter your mobile number"
+        />
 
         <div class="checkbox-row">
           <input id="sms-consent" name="sms-consent" type="checkbox" />
           <label for="sms-consent">
-            I agree to receive recurring automated text messages from Race Poke about race registration reminders and race-related updates. Message frequency varies based on the races and alerts I choose. Message and data rates may apply. Reply STOP to unsubscribe and HELP for help. I agree to the <a href="#privacy-policy">Privacy Policy</a> and <a href="#terms-of-service">Terms of Service</a>.
+            I agree to receive recurring automated text messages from Race Poke about race registration
+            reminders and race-related updates. Message frequency varies based on the races and alerts I
+            choose. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. I agree
+            to the <a href="/privacy-policy.html">Privacy Policy</a> and
+            <a href="/terms.html">Terms of Service</a>.
           </label>
         </div>
 
@@ -192,30 +243,24 @@
         <p class="consent-note">Consent is not a condition of purchase.</p>
       </form>
 
-      <div class="footer-links links">
-        <a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a>
+      <div class="links">
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        <a href="/terms.html">Terms of Service</a>
       </div>
 
       <div class="example">
         <strong>Example confirmation message after sign-up:</strong><br />
-        “Race Poke: Thanks for joining Race Poke! You’ll receive race registration reminders and related updates based on the alerts you selected. Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help or STOP to cancel.”
+        Race Poke: Thanks for joining Race Poke! You’ll receive race registration reminders and related
+        updates based on the alerts you selected. Message frequency varies. Msg &amp; data rates may apply.
+        Reply HELP for help or STOP to cancel.
       </div>
 
-      <section id="privacy-policy" class="section">
-        <h2>Privacy Policy</h2>
-        <p>Race Poke collects your mobile number solely to deliver SMS updates that you explicitly request, including race registration reminders and related race updates based on the alerts you choose to follow.</p>
-        <p>We do not sell, rent, or share your mobile information, including SMS consent, with third parties or affiliates for marketing or promotional purposes. We may share data only when required to provide the messaging service, such as with our SMS platform provider, or when required by law.</p>
-        <p>You can opt out at any time by replying STOP to any Race Poke text message. For help, reply HELP or contact <a href="mailto:support@racepoke.com">support@racepoke.com</a>.</p>
-        <p>Message frequency varies based on the races, deadlines, and alerts you choose to follow. Message and data rates may apply based on your mobile plan. We take commercially reasonable safeguards to protect your data from unauthorized access.</p>
-      </section>
-
-      <section id="terms-of-service" class="section">
-        <h2>Terms of Service</h2>
-        <p>By providing your mobile number, checking the SMS consent box, and submitting the form, you confirm that you are the subscriber or customary user of the number and that you are at least 18 years old.</p>
-        <p>You agree to receive recurring automated SMS messages from Race Poke related to race registration reminders and race-related updates. Message frequency varies. Message and data rates may apply.</p>
-        <p>You can cancel the SMS service at any time by replying STOP. After you send STOP, you may receive one final message confirming that you have been unsubscribed. For help, reply HELP or contact <a href="mailto:support@racepoke.com">support@racepoke.com</a>.</p>
-        <p>SMS delivery may be subject to delays or failures caused by your carrier. The service is provided “as is” without warranties of any kind.</p>
-      </section>
+      <div class="notice">
+        <p class="small">
+          Consent is collected exclusively through this website form. Race Poke does not collect SMS consent
+          through verbal consent, paper forms, QR codes, or third-party lead lists.
+        </p>
+      </div>
     </div>
   </main>
 </body>
