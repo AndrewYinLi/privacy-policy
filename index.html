@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Race Poke SMS Updates</title>
-  <meta
-    name="description"
-    content="Sign up for Race Poke SMS updates about Abbott World Marathon Majors registration deadlines and related updates."
-  />
   <style>
     :root {
       --bg: #f5f7fb;
@@ -48,19 +44,13 @@
       box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
     }
 
-    h1, h2 {
+    h1 {
       margin-top: 0;
+      font-size: 2rem;
       line-height: 1.25;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin: 0 0 14px;
-    }
+    p { margin: 0 0 14px; }
 
     .lead {
       font-size: 1.05rem;
@@ -73,14 +63,6 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       background: #fafafa;
-    }
-
-    .program-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    form {
-      margin-top: 8px;
     }
 
     .field-label {
@@ -103,7 +85,7 @@
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      margin: 16px 0;
+      margin: 16px 0 8px;
       padding: 16px;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -116,13 +98,10 @@
       flex: 0 0 auto;
     }
 
-    .checkbox-row label {
-      margin: 0;
-      font-weight: 400;
-    }
-
-    .button-row {
-      margin-top: 18px;
+    .optional-note,
+    .consent-note {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     button {
@@ -135,37 +114,21 @@
       font-weight: 600;
       padding: 14px 18px;
       cursor: pointer;
-    }
-
-    button:hover {
-      background: var(--accent-hover);
-    }
-
-    .consent-note,
-    .small,
-    .muted {
-      color: var(--muted);
-    }
-
-    .consent-note {
-      margin-top: 12px;
-      font-size: 0.95rem;
-    }
-
-    .links {
       margin-top: 18px;
-      font-weight: 500;
     }
 
-    .links a,
+    button:hover { background: var(--accent-hover); }
+
     a {
       color: var(--accent);
       text-decoration: none;
     }
 
-    .links a:hover,
-    a:hover {
-      text-decoration: underline;
+    a:hover { text-decoration: underline; }
+
+    .links {
+      margin-top: 18px;
+      font-weight: 500;
     }
 
     .example {
@@ -197,17 +160,9 @@
     }
 
     @media (max-width: 640px) {
-      .container {
-        margin: 24px auto;
-      }
-
-      .card {
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 1.7rem;
-      }
+      .container { margin: 24px auto; }
+      .card { padding: 20px; }
+      h1 { font-size: 1.7rem; }
     }
   </style>
 </head>
@@ -237,25 +192,27 @@
         />
 
         <div class="checkbox-row">
-          <input id="sms-consent" name="sms-consent" type="checkbox" required />
+          <input id="sms-consent" name="sms-consent" type="checkbox" />
           <label for="sms-consent">
             I agree to receive recurring automated text messages from Race Poke about Abbott World Marathon Majors registration reminders and related updates. Message frequency varies based on Abbott World Marathon Majors registration deadlines and updates. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. I agree to the <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>.
           </label>
         </div>
 
-        <div class="button-row">
-          <button type="submit">Agree &amp; Sign Up</button>
-        </div>
+        <p class="optional-note">
+          SMS consent is optional and is not required to use Race Poke.
+        </p>
 
-        <p class="consent-note">Consent is not a condition of purchase.</p>
+        <button type="submit">Continue</button>
+
+        <p class="consent-note">
+          Consent is not a condition of purchase or service.
+        </p>
 
         <div id="error-message" class="message error">
-          Please enter a valid phone number and check the consent box before submitting.
+          Please enter a valid phone number.
         </div>
 
-        <div id="success-message" class="message success">
-          Thanks for signing up for Race Poke SMS updates.
-        </div>
+        <div id="success-message" class="message success"></div>
       </form>
 
       <div class="links">
@@ -264,7 +221,7 @@
       </div>
 
       <div class="example">
-        <strong>Example confirmation message after sign-up:</strong><br />
+        <strong>Example confirmation message after SMS opt-in:</strong><br />
         Race Poke: Thanks for joining Race Poke! You’ll receive Abbott World Marathon Majors registration reminders and related updates. Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help or STOP to cancel.
       </div>
     </div>
@@ -291,10 +248,20 @@
 
       errorMessage.style.display = "none";
       successMessage.style.display = "none";
+      successMessage.textContent = "";
 
-      if (!isPhoneValid || !isConsentChecked) {
+      if (!isPhoneValid) {
+        errorMessage.textContent = "Please enter a valid phone number.";
         errorMessage.style.display = "block";
         return;
+      }
+
+      if (isConsentChecked) {
+        successMessage.textContent =
+          "Thanks for signing up for Race Poke SMS updates.";
+      } else {
+        successMessage.textContent =
+          "Thanks. You are not subscribed to SMS updates because SMS consent was not selected.";
       }
 
       form.reset();
